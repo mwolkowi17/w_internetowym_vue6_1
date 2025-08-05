@@ -402,9 +402,9 @@ function clickWithMouse() {
 }
 </script>
 <template>
-<div class="tlo2" role="img" aria-label="gra planszowa - poziom1">
-    <h1 class="sr-only">Gra planszowa - poziom 1</h1>
-    
+    <div class="tlo2" role="img" aria-label="gra planszowa - poziom1">
+        <h1 class="sr-only">Gra planszowa - poziom 1</h1>
+
         <div class="ikona-start" role="img" alt="ikona" aria-label="miejsce startu gry"></div>
         <div class="trasa" role="img" alt="grafika" aria-label="trasa gry zawierająca 16 pól"></div>
         <div class="ikona-meta" role="img" alt="ikona" aria-label="miejsce mety gry"></div>
@@ -414,8 +414,12 @@ function clickWithMouse() {
         <div class="szansa1 szansa_ksztalt1" v-if="if_szansa1" role="img" alt="ikona" aria-label="Szansa 1"></div>
         <div class="szansa2 szansa_ksztalt1" v-if="if_szansa2" role="img" alt="ikona" aria-label="Szansa 2"></div>
         <div class="szansa3 szansa_ksztalt1" v-if="if_szansa3" role="img" alt="ikona" aria-label="Szansa 3"></div>
-        <button class="rzut1 my-button anim1" v-if="if_rzuc_kostka" @click="clickWithMouse"
-            @keydown.enter="clickWithFocus" role="button">Rzuć kostką</button>
+        <div class="container">
+            <div class="button-column">
+                <button class="rzut1 my-button anim1" v-if="if_rzuc_kostka" @click="clickWithMouse"
+                    @keydown.enter="clickWithFocus" role="button">Rzuć kostką</button>
+            </div>
+        </div>
         <div class="kostka1" :class="{
             'kostka1image1': isSet1,
             'kostka1image2': isSet2,
@@ -551,6 +555,22 @@ function clickWithMouse() {
 .kostka1image6 {
     background-image: url("../assets/kostka_6oczek.png");
 }
+.container{
+    /* position: absolute; */
+    position: relative;
+    top: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;;
+    align-items: center;
+   
+}
+
+.button-column{
+    display: flex;
+   justify-content: center;
+    width: 500px;
+}
 
 .rzut1 {
     color: rgb(255, 255, 255);
@@ -558,18 +578,24 @@ function clickWithMouse() {
     font-style: bold;
     font-weight: 700;
     font-family: "Proxima Nova", sans-serif;
-    background-image: url("../assets/rzut_przycisk.png");
+    /*background-image: url("../assets/rzut_przycisk.png");
     background-size: 333px 86px;
-    background-repeat: no-repeat;
-    top: 560px;
-    left: 1502px;
-    height: 88px;
-    width: 333px;
-    position: absolute;
+    background-repeat: no-repeat;*/
+    background-color: rgb(29, 56, 80);
+    border: 10px solid white;
+    /* margin-right: 2.2em; */
+    /* margin-right: 90px; */
+    /* top: 560px;
+    left: 1502px; */
+    /* height: 88px;
+    width: 333px; */
+    height: 2.3em;
+    width: 8em;
+    /*position: relative; */
     z-index: 2;
+
     /* outline: 4px solid transparent; */
 }
-
 /* .rzut1:hover {
     cursor: pointer;
 } */

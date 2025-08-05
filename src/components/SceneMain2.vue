@@ -272,43 +272,43 @@ function kostka_click() {
 
 const koniecQuizu = () => {
     if (krok_gracz1_na_planszy.value < 15) {
-    if_rzuc_kostka.value = true
+        if_rzuc_kostka.value = true
 
-    const buttonRzutVis = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(document.querySelector(".rzut2"))
-        }, 300);
-    })
+        const buttonRzutVis = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(document.querySelector(".rzut2"))
+            }, 300);
+        })
 
-    //buttonRzutVis.then((res) => { res.focus() })
-}
+        //buttonRzutVis.then((res) => { res.focus() })
+    }
 
     if (krok_gracz1_na_planszy.value === 15) {
         if_rzuc_kostka.value = false
         console.log("plansza win!")
         emit('koniec-etap2')
-     
+
     }
 }
 
 const koniecQuizuFocusOn = () => {
     if (krok_gracz1_na_planszy.value < 15) {
-    if_rzuc_kostka.value = true
+        if_rzuc_kostka.value = true
 
-    const buttonRzutVis = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(document.querySelector(".rzut2"))
-        }, 300);
-    })
+        const buttonRzutVis = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(document.querySelector(".rzut2"))
+            }, 300);
+        })
 
-    buttonRzutVis.then((res) => { res.focus() })
-}
-if(krok_gracz1_na_planszy.value === 15) {
+        buttonRzutVis.then((res) => { res.focus() })
+    }
+    if (krok_gracz1_na_planszy.value === 15) {
         if_rzuc_kostka.value = false
-        console.log("plansza win focus!")  
+        console.log("plansza win focus!")
         ifFocusEmitGlobal.value = true
         emit('koniec-etap2-focus')
-}
+    }
 }
 
 const koniecPulapki = () => {
@@ -391,38 +391,49 @@ function clickWithMouse() {
 }
 </script>
 <template>
-    <h1 class="sr-only">Gra planszowa - poziom 2</h1>
-    <div class="tlo_main2" role="img" aria-label="gra planszowa - poziom 2"></div>
-     <div class="ikona-start" role="img" alt="ikona" aria-label="miejsce startu gry"></div>
-    <div class="trasa" role="img" alt="grafika" aria-label="trasa gry zawierająca 16 pól"></div>
-    <div class="ikona-meta" role="img" alt="ikona" aria-label="miejsce mety gry"></div>
-    <div class="pionek1" :style="{ left: pionek_left + 'px', top: pionek_top + 'px' }" role="img" alt="pionek"
-        aria-label="Pionek"></div>
-    <h2 class="szanse-napis">szanse:</h2>
-    <div class="szansa1 szansa_ksztalt1" v-if="if_szansa1" role="img" alt="gwiazdka ikona szansy" aria-label="Szansa 1">
+    <div class="tlo_main2" role="img" aria-label="gra planszowa - poziom 2">
+        <h1 class="sr-only">Gra planszowa - poziom 2</h1>
+
+        <div class="ikona-start" role="img" alt="ikona" aria-label="miejsce startu gry"></div>
+        <div class="trasa" role="img" alt="grafika" aria-label="trasa gry zawierająca 16 pól"></div>
+        <div class="ikona-meta" role="img" alt="ikona" aria-label="miejsce mety gry"></div>
+        <div class="pionek1" :style="{ left: pionek_left + 'px', top: pionek_top + 'px' }" role="img" alt="pionek"
+            aria-label="Pionek"></div>
+        <h2 class="szanse-napis">szanse:</h2>
+        <div class="szansa1 szansa_ksztalt1" v-if="if_szansa1" role="img" alt="gwiazdka ikona szansy"
+            aria-label="Szansa 1">
+        </div>
+        <div class="szansa2 szansa_ksztalt1" v-if="if_szansa2" role="img" alt="gwiazdka ikona szansy"
+            aria-label="Szansa 2">
+        </div>
+        <div class="szansa3 szansa_ksztalt1" v-if="if_szansa3" role="img" alt="gwiazdka ikona szansy"
+            aria-label="Szansa 3">
+        </div>
+        <div class="szansa4 szansa_ksztalt1" v-if="if_szansa4" role="img" alt="gwiazdka ikona szansy"
+            aria-label="Szansa 4">
+        </div>
+        <div class="container">
+            <div class="button-column">
+                <button class="rzut2 my-button anim1" v-if="if_rzuc_kostka" @click="clickWithMouse"
+                    @keydown.enter="clickWithFocus" role="button">Rzuć kostką</button>
+            </div>
+        </div>
+        <div class="kostka1" :class="{
+            'kostka1image1': isSet1,
+            'kostka1image2': isSet2,
+            'kostka1image3': isSet3,
+            'kostka1image4': isSet4,
+            'kostka1image5': isSet5,
+            'kostka1image6': isSet6
+        }" v-if="if_widok_kostki" role="img" alt="kostka do gry" :aria-label=wyrzuconaWartoscKostki></div>
+        <SceneTrap v-if="if_widok_pulapki" @koniec-pulapka="if_widok_pulapki = false, koniecPulapki()"
+            @koniec-pulapka-focus="if_widok_pulapki = false; koniecPulapkiFocusOn()" rel="preload"
+            :ifButtonOnFocusTrap="ifTrapFocusOn" />
+        <SceneQuizz2 v-if="if_widok_quizz2" @koniec-quizz="if_widok_quizz2 = false, koniecQuizu()"
+            @koniec-quizz-focus="if_widok_quizz2 = false, koniecQuizuFocusOn()" @odejmij-szanse="odejmijSzanse"
+            msg="Hej" :miejsceNaPlanszy="krok_gracz1_na_planszy" :ifButtonOnFocusQuizz2="ifQuizzFocusOn2"
+            rel="preload" />
     </div>
-    <div class="szansa2 szansa_ksztalt1" v-if="if_szansa2" role="img" alt="gwiazdka ikona szansy" aria-label="Szansa 2">
-    </div>
-    <div class="szansa3 szansa_ksztalt1" v-if="if_szansa3" role="img" alt="gwiazdka ikona szansy" aria-label="Szansa 3">
-    </div>
-    <div class="szansa4 szansa_ksztalt1" v-if="if_szansa4" role="img" alt="gwiazdka ikona szansy" aria-label="Szansa 4">
-    </div>
-    <button class="rzut2 my-button anim1" v-if="if_rzuc_kostka" @click="clickWithMouse" @keydown.enter="clickWithFocus"
-        role="button">Rzuć kostką</button>
-    <div class="kostka1" :class="{
-        'kostka1image1': isSet1,
-        'kostka1image2': isSet2,
-        'kostka1image3': isSet3,
-        'kostka1image4': isSet4,
-        'kostka1image5': isSet5,
-        'kostka1image6': isSet6
-    }" v-if="if_widok_kostki" role="img" alt="kostka do gry" :aria-label=wyrzuconaWartoscKostki></div>
-    <SceneTrap v-if="if_widok_pulapki" @koniec-pulapka="if_widok_pulapki = false, koniecPulapki()"
-        @koniec-pulapka-focus="if_widok_pulapki = false; koniecPulapkiFocusOn()" rel="preload"
-        :ifButtonOnFocusTrap="ifTrapFocusOn" />
-    <SceneQuizz2 v-if="if_widok_quizz2" @koniec-quizz="if_widok_quizz2 = false, koniecQuizu()"
-        @koniec-quizz-focus="if_widok_quizz2 = false, koniecQuizuFocusOn()" @odejmij-szanse="odejmijSzanse" msg="Hej"
-        :miejsceNaPlanszy="krok_gracz1_na_planszy" :ifButtonOnFocusQuizz2="ifQuizzFocusOn2" rel="preload" />
 </template>
 
 <style scoped>
@@ -448,19 +459,19 @@ function clickWithMouse() {
     z-index: 0;
 }
 
-.sr-only{
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
-.trasa{
+.trasa {
     background-image: url("../assets/sama_plansza.png");
     background-size: 1280px 799px;
     background-repeat: no-repeat;
@@ -472,7 +483,7 @@ function clickWithMouse() {
     z-index: 0;
 }
 
-.ikona-meta{
+.ikona-meta {
     background-image: url("../assets/meta_poziom2.png");
     background-size: 267px 288px;
     background-repeat: no-repeat;
@@ -497,7 +508,7 @@ function clickWithMouse() {
 
 .szanse-napis {
     color: rgb(29, 56, 80);
-    font-size: 45px;
+    font-size: 2.8em;
     font-style: bold;
     font-weight: 600;
     font-family: "Proxima Nova", sans-serif;
@@ -546,22 +557,45 @@ function clickWithMouse() {
     background-image: url("../assets/kostka_6oczek.png");
 }
 
+.container {
+    /* position: absolute; */
+    position: relative;
+    top: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;
+    ;
+    align-items: center;
+
+}
+
+.button-column {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+
 .rzut2 {
     color: rgb(255, 255, 255);
-    font-size: 40px;
+    font-size: 2.5em;
     font-style: bold;
     font-weight: 700;
     font-family: "Proxima Nova", sans-serif;
-    background-image: url("../assets/rzut_przycisk.png");
+    /* background-image: url("../assets/rzut_przycisk.png");
     background-size: 333px 86px;
-    background-repeat: no-repeat;
-    top: 560px;
+    background-repeat: no-repeat; */
+    background-color: rgb(29, 56, 80);
+    border: 10px solid white;
+    /* top: 560px;
     left: 1502px;
     height: 88px;
-    width: 333px;
-    position: absolute;
+    width: 333px; */
+    height: 2.3em;
+    width: 8em;
+    /* position: absolute; */
     z-index: 2;
 }
+
 
 .rzut2:hover {
     cursor: pointer;
