@@ -25,8 +25,8 @@ fanfary.play();
 <template>
     <div class="plansza-win">
         <div class="container">
-            <h1 class="naglowek">GRATULACJE!</h1>
-            <h2 class="napis">Udało ci się ukończyć grę.</h2>
+            <h1 class="naglowek">Gratulacje!</h1>
+            <h2 class="napis">Udało Ci się ukończyć grę.</h2>
             <div class="container-buttons">
                 <button class="gram-jeszcze-1 my-button anim1" @click="$emit('jeszcze-raz')"
                     @keydown.enter="$emit('jeszcze-raz-focus')" role="img" alt="przycisk"

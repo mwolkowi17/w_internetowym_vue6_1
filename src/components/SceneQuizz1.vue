@@ -157,6 +157,9 @@ textToDisplayPytanie = "<span>"+quizz_assets_data.pokaz_zadanie_2(miejsce).tresc
 else if(miejsce===10){
 textToDisplayPytanie = "<span>"+quizz_assets_data.pokaz_zadanie_2(miejsce).tresc+"</span>"+"<img class='malpa2' src="+malpa1image+">"
 }
+else if(miejsce===12){
+textToDisplayPytanie = "<span>"+quizz_assets_data.pokaz_zadanie_2(miejsce).tresc+"</span>"+"<img class='malpa3' src="+malpa1image+">"
+}
 else{
 textToDisplayPytanie = "<span>"+quizz_assets_data.pokaz_zadanie_2(miejsce).tresc+"</span>"  
 }
@@ -218,7 +221,7 @@ return textToDisplayPytanie
     </div>
 
     <div class="plansza-dobrze" v-if="if_odpowiedz_dobrze">
-      <p class="naglowek-after-quizz naglowek-dobrze">BRAWO!</p>
+      <p class="naglowek-after-quizz naglowek-dobrze">Brawo!</p>
       <p class="napis-odpowiedz">Prawidłowa odpowiedź.</p>
 
       <button class="button-dalej-dobrze my-button anim1" v-if="if_button_dalej_dobrze" @click="if_odpowiedz_dobrze = false,
@@ -351,6 +354,11 @@ return textToDisplayPytanie
 .pytanie1:deep(.malpa2){
    position:absolute;
    left: 11.6em;
+}
+
+.pytanie1:deep(.malpa3){
+   position:absolute;
+   left: 12.2em;
 }
 
 ul {

@@ -268,7 +268,7 @@ return textToDisplayPytanie
                 odpowiedź</button>
         </div>
         <div class="plansza-dobrze" v-if="if_odpowiedz_dobrze">
-            <p class="naglowek-after-quizz">BRAWO!</p>
+            <p class="naglowek-after-quizz">Brawo!</p>
             <p class="napis-odpowiedz">Prawidłowa odpowiedź.</p>
             <button class="button-dalej-dobrze my-button anim1" v-if="if_button_dalej_dobrze" @click="if_odpowiedz_dobrze = false,
                 if_button_dalej_dobrze = false,

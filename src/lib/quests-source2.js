@@ -36,18 +36,18 @@ export class Quests2 {
         odpowiedz_text: [
           [
             "nie klikasz, usuwasz ten mail",
-            "klikasz aby sprawdzić, o co chodzi",
+            "klikasz, aby sprawdzić o co chodzi",
             "nie klikasz, ale rozsyłasz e-mail do znajomych",
             1,
           ],
           [
-            "klikasz aby sprawdzić, o co chodzi",
+            "klikasz, aby sprawdzić o co chodzi",
             "nie klikasz, usuwasz ten mail",
             "nie klikasz, ale rozsyłasz e-mail do znajomych",
             2,
           ],
           [
-            "klikasz aby sprawdzić, o co chodzi",
+            "klikasz, aby sprawdzić o co chodzi",
             "nie klikasz, ale rozsyłasz e-mail do znajomych",
             "nie klikasz, usuwasz ten mail",
             3,
