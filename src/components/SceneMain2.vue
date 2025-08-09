@@ -585,7 +585,7 @@ function clickWithMouse() {
     background-size: 333px 86px;
     background-repeat: no-repeat; */
     background-color: rgb(29, 56, 80);
-    border: 10px solid white;
+    /* border: 10px solid white; */
     /* top: 560px;
     left: 1502px;
     height: 88px;

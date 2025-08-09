@@ -448,7 +448,7 @@ function clickWithMouse() {
     position: absolute;
 }
 
-/* .ikona-start {
+ .ikona-start {
     background-image: url("../assets/start_poziom1.png");
     background-size: 255px 305px;
     background-repeat: no-repeat;
@@ -458,7 +458,7 @@ function clickWithMouse() {
     top: -18px;
     left: 23px;
     z-index: 0;
-} */
+} 
 
 .sr-only {
     position: absolute;
@@ -582,7 +582,7 @@ function clickWithMouse() {
     background-size: 333px 86px;
     background-repeat: no-repeat;*/
     background-color: rgb(29, 56, 80);
-    border: 10px solid white;
+    /*border: 10px solid white;*/
     /* margin-right: 2.2em; */
     /* margin-right: 90px; */
     /* top: 560px;
